@@ -8,23 +8,36 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Free Lunch'),
-          centerTitle: false,
-          backgroundColor: Colors.yellowAccent,
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/login');
-              },
-              child: CircleAvatar(
-                radius: 25,
-                backgroundImage: NetworkImage(
-                    'https://www.dreamstime.com/photos-images/forest.html'),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: CustomAppBar(
+            title: 'Home',
+            appbarcolor: Colors.deepOrangeAccent,
+          ),
+        ),
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: <Widget>[
+              Text("Lunch Sent"),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: 12,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    margin: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Text("Colours 1"),
+                  );
+                },
               ),
-            ),
-        
-          ],
+            
+              ],
+          ),
         ),
       ),
     );
